@@ -11,9 +11,12 @@ async function getData() {
     // if response is not OK, throw an error
     if (!res.ok) 
         throw new Error("Failed to fetch data")
+
+    if (res.headers.get("content-type") !== "application/json") {
+        return {items: []};
+    }
     // return response of json
     return res.json();
-    // return {items: []};
 }
 
 export default async function BlogPage() {
