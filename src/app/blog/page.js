@@ -1,6 +1,9 @@
 // 'use client'
 import getDomain from "@/app/lib/getDomain"
 
+//fetch caching options
+//force-cache, no-store, revalidate: n seconds
+
 async function getData() {
     // 1 - grab API endpoint
     const domain = getDomain();
@@ -15,7 +18,6 @@ async function getData() {
     if (res.headers.get("content-type") !== "application/json") {
         return {items: []};
     }
-    // return response of json
     return res.json();
 }
 
